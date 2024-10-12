@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: services-config
+  namespace: default
+data:
+  FRONTEND_SERVICE_HOST: "frontend-service"
+  FRONTEND_SERVICE_PORT: "3000"
+  BACKEND_SERVICE_HOST: "backend-service"
+  BACKEND_SERVICE_PORT: "8000"
+  MONGO_SERVICE_HOST: "mongo-service"
+  MONGO_SERVICE_PORT: "27017"
