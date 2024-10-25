@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git url: 'https://github.com/your-username/your-repo.git', branch: 'main'
+                git url: 'https://github.com/mahmoudabohelwa/Depi-project', branch: 'main'
             }
         }
 
@@ -32,12 +32,15 @@ pipeline {
             }
         }
 
-        stage('Deploy with Docker Compose') {
+        stage('Terraform Destroy and Apply') {
             steps {
-                sh """
-                docker-compose -f /home/mahmoud/depi/docker-compose.yml
-                docker-compose -f /home/mahmoud/depi/docker-compose.yml up -d --remove-orphans
-                """
+                dir('terraform') { 
+                    sh """
+                    terraform init
+                    terraform destroy -auto-approve
+                    terraform apply -auto-approve -var-file=(...............)
+                    """
+                }
             }
         }
     }
